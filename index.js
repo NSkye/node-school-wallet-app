@@ -72,7 +72,12 @@ app.post('/cards', (req, res)=>{
 		res.statusCode = 400;
 		return res.end('400 Bad request');
 	}
-	res.json(req.body);
+	fs.open('source/cards.json','r+', (err, fd) => {
+		if (err) throw err;
+		fs.readFile(fd,'utf8', (err, data) => {
+			
+		})
+	});
 });
 
 app.listen(3000, () => {
