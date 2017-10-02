@@ -8,7 +8,7 @@ const luhn = (num) => {
 	let i = 1;
 	console.log('Check-digit: '+num[0]);
 	while (num[i]) {
-		if (i%2===0) {
+		if (i%2) {
 			let newNum = (Number(num[i])*2).toString();
 			if (newNum.length>1)
 				newNum = (Number(newNum[0])+Number(newNum[1])).toString();
@@ -71,9 +71,8 @@ app.post('/cards', (req, res)=>{
 	if (!validCard) {
 		res.statusCode = 400;
 		return res.end('400 Bad request');
-	} else {
-		res.json(req.body);
 	}
+	res.json(req.body);
 });
 
 app.listen(3000, () => {
